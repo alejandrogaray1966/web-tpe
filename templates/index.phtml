@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta base="<?=BASE_URL?>" href="<?=BASE_URL?>">
+    <base href="<?=BASE_URL?>">
+    <title><?=$pagina?></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <header>
+        <h1><?=$titulo?></h1>
+        <h3>Usuario:<?=$GLOBALS['usuario']?></h3>
+        <div class="menu"><a>MENÚ</a> 
+        </div>
+        <nav class="barra">
+            <a href="notdone" title="Ir a la página de Login"> <p class="botonDelMenu">Iniciar Sesión</p></a>
+            <a href="alumnos" title="Ir a la página de Alumnos"> <p class="botonDelMenu">Alumnos</p></a>
+            <a href="notdone" title="Ir a la página de Rutinas"> <p class="botonDelMenu">Rutinas</p></a>
+            <a href="about" title="Ir a la página de Contacto"> <p class="botonDelMenu">Contacto</p></a>
+            <a href="notdone" title="Ir a la página de Logout"> <p class="botonDelMenu">Cerrar Sesión</p></a>
+        </nav>
+   </header> 
+   <main>
+        <article>
+            <h3>¿Quienes somos?</h3>
+            <p> Somos una empresa familiar, fundada el 16 de Febrero del 2019, 
+                dedicada a fortalecer el sentido estético de nuestros clientes,
+                procurando elevar su autopercepción de la belleza, estableciendo 
+                un vinculo cuyo eje principal es la empatía. 
+            </p>
+            <p>
+                Nuestro personal cuenta con una amplia experiencia en su área de trabajo
+                y una capacitación constante en post de la excelencia, esto, mas una relación
+                costo-servicio, hacen de nuestra empresa, una de las mas elegidas en la
+                ciudad de Tandil.
+            </p>
+            <p>
+                Esperamos conocerlo ...
+            </p>
+        </article>
+        <aside>
+            <h3>¿Dónde nos encontramos?</h3>
+            <figure>
+                <a href="notdone"><img src="images/frente.jpeg" alt="Foto del frente del GYM" title="Ir a Google Maps"></a>
+            </figure>
+            <h3>¿Dónde seguirnos?</h3>
+            <figure>
+                <a class="logo" href="notdone"><img src="images/instagram.jpeg" alt="Logo de Instagram" title="Ir a Instagram"></a>
+                <a class="logo" href="notdone"><img src="images/facebook.jpeg" alt="Logo de Facebook" title="Ir a Facebook"></a>
+                <a class="logo" href="notdone"><img src="images/tiktok.jpeg" alt="Logo de Tiktok" title="Ir a Tiktok"></a>
+            </figure>
+        </aside>
+   </main>
+   <footer>
+        <h5>Si desea contactarnos comuniquese al 2494-640291 (nuestro Whatsapp)</h5>
+        <h6>Fecha de última actualización: <time>30 de septiembre de 2024</time></h6>
+   </footer>
+    <script src="js/index.js"></script>
+</body>
+</html>

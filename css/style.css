@@ -1,0 +1,221 @@
+/*                 modo MOBILE                   */
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    Background-color: black;
+    color: white;
+    font-size: 50%;
+}
+.modo_claro {
+    Background-color: white;
+    color: black;
+}
+h1 , h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic;
+    color: greenyellow;
+}
+h1 {
+    font-size: 4em;
+}
+h2 {
+    font-size: 3em;
+}
+h3 , h4 {
+    text-align: left;
+    text-transform: capitalize;
+    font-style: oblique;
+}
+h3 {
+    font-size: 2.5em;
+    color: grey;
+}
+h4 {
+    font-size: 2em;
+    text-decoration: underline;
+    color:darkslategray;
+}
+h5 , h6 {
+    text-transform:none;
+    font-style:normal;
+    color: black;
+}
+h5 {
+    text-align: center;
+    font-size: 1.2em;
+}
+h6 {
+    text-align: right;
+    font-size: 0.8em;
+}
+p , li {
+    text-align: justify;
+    text-transform: none;
+    font-size: 2em;
+    font-style: normal;
+}
+header {
+    background-image: url(../images/logo.jpeg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: initial;
+}
+.menu {
+    width: 30%;
+    text-align: center;
+    font-size: 2em;
+    background-color: black;
+    border: solid 1px gray;
+}
+.barra {
+    width: 30%;
+    background-color: greenyellow;
+    color: black;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1;
+}
+a {
+    text-decoration: none;
+}
+.barra.show {
+    display: flex;
+}
+.botonDelMenu {
+    text-align: center;
+    text-transform:capitalize;
+    font-size: 2em;
+    font-style:normal;
+    color: black;
+    text-decoration: none;
+    margin: 0px;
+}
+.botonDelMenu:hover {
+    background-color:brown;
+}
+main {
+    display: flex;
+    flex-direction: column;
+}
+article , aside {
+    width: 95%;
+    margin: 1%;
+    margin-right: 5%;
+}
+figure {
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+img {
+    width: 90%;
+}
+.logo {
+    width: 20%;
+}
+footer {
+    background-color: gray;
+}
+.contVolver {
+    width: 95%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+.volver1 , .volver2 , .lampara {
+    width: 4%;
+    margin-bottom: 8%;
+    border: solid 2px grey;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+}
+.volver1 {
+    margin-right: 11%;
+}
+.volver2 {
+    margin-right: 6%;
+}
+.lampara {
+    margin-right: 1%;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    font-size: 2em;
+    font-style: normal;
+    margin: 5%;
+    padding: 5%;
+    border: solid 5px grey;
+}
+.contRadio , .contCheckbox {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+input[type=text] , input[type=date] {
+    font-size: 1em;
+    font-style: normal;
+    color: blue;
+}
+input[type=radio] , input[type=checkbox] {
+    margin-left: 10%;
+    width: 1.5em; 
+    height: 1.5em;
+}
+button {
+    background-color: blue;
+    border: solid 3px grey;
+    font-size: 1em;
+    font-style: normal;
+    color: white;
+    cursor: pointer;
+}
+.oculto {
+    display: none;
+}
+
+/*                 pasar a modo DESKTOP          */
+
+@media (width >= 768px) {
+    body {
+        font-size: 75%;
+    }
+    h5 {
+        font-size: 1.5em;
+    }
+    .menu {
+        display: none;
+    }
+    .barra {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+    main {
+        flex-direction: row;
+    }
+    article {
+        width: 60%;
+        margin: 1%;
+    }
+    aside {
+        width: 40%;
+        margin: 1%;
+        margin-right: 5%;
+    }
+    figure {
+        width: 80%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+    img {
+        width: 90%;
+    }
+}

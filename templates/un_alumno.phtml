@@ -1,0 +1,25 @@
+<?php require_once "templates/header.phtml" ?>
+
+        <article>
+            <h4> Detalle del Alumno </h4>
+            <h3> Nombre: <?=$alumno->nombre?> </h3> 
+            <h3> Fecha de Nacimiento: <?=$alumno->nacimiento?> </h3> 
+            <h3> Peso: <?=$alumno->peso?> </h3> 
+            <h3> Altura: <?=$alumno->altura?> </h3> 
+            <h3> Rutina de Ejercicios N°: <?=$alumno->id_rutina?>
+            | <a href="alumno/<?=$alumno->id_alumno?>" title="Ver la Rutina del Alumno: <?=$alumno->nombre?>" >Verla</a> |
+            </h3>
+        </article>
+        <aside>
+            <h3>Foto del Alumno:</h3>
+            <figure>
+                <img src="<?=$alumno->foto?>" alt="Foto del Alumno">
+            </figure>
+            <h3>Nota:</h3>
+            <ul>
+                <li>Puede acceder a ver la Rutina de Ejercicios</li>
+                <li>Presione en VERLA para lograrlo</li>
+            </ul>
+        </aside>
+
+<?php require_once "templates/footer.phtml" ?>
