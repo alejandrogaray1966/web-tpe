@@ -18,11 +18,11 @@ class AluController {
     }
 
     //  Funciones de la Clase
-    public function showAlumnos() {
+    public function showAlumnos($rutinas) {
         // Obtengo los alumnos de la base de datos
         $alumnos = $this->model->obtenerTodosAlumnos();
         // Mando todos los alumnos a la vista
-        $this->view->mostrarTodosAlumnos($alumnos);
+        $this->view->mostrarTodosAlumnos($alumnos,$rutinas);
         return;
     }
 
@@ -38,6 +38,20 @@ class AluController {
             // Mando un solo alumno a la vista
             $this->view->mostrarUnAlumno($alumno);
         };
+        return;
+    }
+
+    public function obtenerTodosAlumnosPorRutina($id){
+        $alumnos = null;
+        if ( !empty($id) ) {
+            $alumnos = $this->model->obtenerTodosAlumnosPorRutina($id);
+        }
+        return $alumnos;
+    }
+
+    public function filtroPorRutina($id,$rutinas) {
+        $alumnos = $this->model->obtenerTodosAlumnosPorRutina($id);
+        $this->view->mostrarTodosAlumnosPorRutina($alumnos,$rutinas);
         return;
     }
 

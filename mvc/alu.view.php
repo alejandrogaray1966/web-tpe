@@ -4,9 +4,9 @@
 class AluView {
 
     //  Funciones de la Clase
-    public function mostrarTodosAlumnos($alumnos) {
+    public function mostrarTodosAlumnos($alumnos,$rutinas) {
         // La vista define una nueva variable con la cantidad de alumnos
-        $count = count($alumnos);
+        $cantidad = count($alumnos);
         $pagina = "Alumnos";
         $titulo = "Listado de Alumnos";
         //  El template va a poder acceder a todas las variables y constantes que tienen alcance en esta función
@@ -18,6 +18,20 @@ class AluView {
         $pagina = "Alumno";
         $titulo = "Ficha del Alumno";
         require_once 'templates/un_alumno.phtml';
+        return;
+    }
+
+    public function mostrarTodosAlumnosPorRutina($alumnos,$rutinas) {
+        $cantidad = count($alumnos);
+        $pagina = "Alumnos";
+        $titulo = "Alumnos asignados a la Rutina";
+        if ( $cantidad > 0 ) {
+            $alumno = $alumnos[0];    
+            $titulo = "$alumno->nombre" ;
+        } else {
+            $titulo = "No hay Alumnos asignados a la Rutina" ;
+        };
+        require_once 'templates/todos_alumnos.phtml';
         return;
     }
 

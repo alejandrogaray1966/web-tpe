@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2024 a las 19:35:05
+-- Tiempo de generación: 14-10-2024 a las 22:29:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,26 +29,61 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alumnos` (
   `id_alumno` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
+  `nombreYapellido` varchar(30) NOT NULL,
   `nacimiento` date NOT NULL,
   `peso` double NOT NULL,
   `altura` double NOT NULL,
-  `id_rutina` int(11) NOT NULL
+  `id_rutina` int(11) NOT NULL,
+  `foto` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `alumnos` (`id_alumno`, `nombre`, `nacimiento`, `peso`, `altura`, `id_rutina`) VALUES
-(1, 'Julio Checa', '2014-09-17', 60.8, 1.66, 1),
-(2, 'Miriam Landa', '1996-05-05', 65.8, 1.68, 1),
-(3, 'Fernando Greco', '1990-10-22', 70.5, 1.59, 2),
-(4, 'Valeria Motschakow', '1989-11-27', 62.3, 1.61, 2),
-(5, 'Guillermo Brown', '1981-05-17', 80.9, 1.75, 3),
-(6, 'Juan Manuel Porcel', '1978-06-25', 80.7, 1.65, 1),
-(7, 'Marcelo Robertson', '1975-12-30', 86.3, 1.72, 2),
-(8, 'Adriana Wooley', '1989-01-13', 55.9, 1.59, 3);
+INSERT INTO `alumnos` (`id_alumno`, `nombreYapellido`, `nacimiento`, `peso`, `altura`, `id_rutina`, `foto`) VALUES
+(1, 'Julio Checa', '2014-09-17', 60.8, 1.66, 1, 'images/alumnonuevo.jpeg'),
+(2, 'Miriam Landa', '1996-05-05', 65.8, 1.68, 1, 'images/alumnonuevo.jpeg'),
+(3, 'Fernando Greco', '1990-10-22', 70.5, 1.59, 2, 'images/alumnonuevo.jpeg'),
+(4, 'Valeria Motschakow', '1989-11-27', 62.3, 1.61, 2, 'images/alumnonuevo.jpeg'),
+(5, 'Guillermo Brown', '1981-05-17', 80.9, 1.75, 3, 'images/alumnonuevo.jpeg'),
+(6, 'Juan Manuel Porcel', '1978-06-25', 80.7, 1.65, 1, ''),
+(7, 'Marcelo Robertson', '1975-12-30', 86.3, 1.72, 2, ''),
+(8, 'Adriana Wooley', '1989-01-13', 55.9, 1.59, 3, ''),
+(9, 'Diego Fissina', '2001-10-09', 80.5, 1.78, 3, ''),
+(10, 'Ismael Masias', '2002-11-13', 90.3, 1.76, 3, ''),
+(11, 'Valeria Zunino', '2024-12-14', 56.9, 1.66, 3, ''),
+(12, 'Silvana Toledo', '2003-08-12', 56.8, 1.65, 3, ''),
+(15, 'Juan Segundo', '0000-00-00', 0, 0, 1, ''),
+(16, 'Juan Sebastian', '0000-00-00', 0, 0, 1, ''),
+(17, 'Juan Marcelo', '0000-00-00', 0, 0, 1, ''),
+(18, 'Juan Manuel', '0000-00-00', 0, 0, 1, ''),
+(19, 'Juan Ignacio Torrissi', '0000-00-00', 0, 0, 1, ''),
+(27, 'pedrito', '0000-00-00', 0, 0, 1, ''),
+(30, 'alice', '0000-00-00', 0, 0, 1, ''),
+(34, 'Mariano Cesario', '1980-04-26', 78.5, 1.75, 1, ''),
+(45, 'Roxana Miranda', '1999-09-09', 68.9, 1.69, 2, ''),
+(46, '&lt;&quot;juan&quot;&gt;', '2000-06-15', 0, 0, 1, ''),
+(47, 'Vicente Contreras', '1999-06-14', 86.5, 1.7, 3, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `claves`
+--
+
+CREATE TABLE `claves` (
+  `id_clave` int(11) NOT NULL,
+  `usuario` varchar(30) NOT NULL,
+  `contrasena` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `claves`
+--
+
+INSERT INTO `claves` (`id_clave`, `usuario`, `contrasena`) VALUES
+(1, 'webadmin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -58,6 +93,7 @@ INSERT INTO `alumnos` (`id_alumno`, `nombre`, `nacimiento`, `peso`, `altura`, `i
 
 CREATE TABLE `rutinas` (
   `id_rutina` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
   `entrada` varchar(50) NOT NULL,
   `pecho` varchar(50) NOT NULL,
   `espalda` varchar(50) NOT NULL,
@@ -68,10 +104,13 @@ CREATE TABLE `rutinas` (
 -- Volcado de datos para la tabla `rutinas`
 --
 
-INSERT INTO `rutinas` (`id_rutina`, `entrada`, `pecho`, `espalda`, `piernas`) VALUES
-(1, 'abdominales 3 x 5', 'press banca con mancuernas 3 x 6', 'remo con mancuernas 3 x 7', 'zancadas con mancuerna 3 x 8'),
-(2, 'lagartijas 3 x 6', 'press banca con barra 3 x 7', 'remo con barra 3 x 8', 'sentadilla con barra 3 x 9'),
-(3, 'peso muerto con barra 3 x 10', 'polea pecho 3 x 8', 'remo 3 x 9', 'prensa 3 x 10');
+INSERT INTO `rutinas` (`id_rutina`, `nombre`, `entrada`, `pecho`, `espalda`, `piernas`) VALUES
+(1, 'Principiante', 'abdominales 3 x 5', 'press banca con mancuernas 3 x 6', 'remo con mancuernas 3 x 7', 'zancadas con mancuerna 3 x 8'),
+(2, 'Intermedio', 'lagartijas 3 x 6', 'press banca con barra 3 x 7', 'remo con barra 3 x 8', 'sentadilla con barra 3 x 9'),
+(3, 'Experto', 'peso muerto con barra 3 x 10', 'polea pecho 3 x 8', 'remo 3 x 9', 'prensa 3 x 10'),
+(5, 'Jovenes', '20 lagartijas', '10 banco', 'espinales', 'sentadillas'),
+(7, 'Jovenes xx', '20 flexiones', '', '', ''),
+(13, 'Adultos Mayor', '10 lagartijas', 'acostado mancuernas arriba', 'sentado mancuernas arriba', 'sentadillas con disco');
 
 --
 -- Índices para tablas volcadas
@@ -84,6 +123,13 @@ ALTER TABLE `alumnos`
   ADD PRIMARY KEY (`id_alumno`),
   ADD UNIQUE KEY `id_alumno` (`id_alumno`),
   ADD KEY `id_rutina` (`id_rutina`);
+
+--
+-- Indices de la tabla `claves`
+--
+ALTER TABLE `claves`
+  ADD PRIMARY KEY (`id_clave`),
+  ADD UNIQUE KEY `id_clave` (`id_clave`);
 
 --
 -- Indices de la tabla `rutinas`
@@ -100,13 +146,19 @@ ALTER TABLE `rutinas`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT de la tabla `claves`
+--
+ALTER TABLE `claves`
+  MODIFY `id_clave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `rutinas`
 --
 ALTER TABLE `rutinas`
-  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas

@@ -2,12 +2,12 @@
 
         <article>
             <h4> Detalle del Alumno </h4>
-            <h3> Nombre: <?=$alumno->nombre?> </h3> 
+            <h3> Nombre: <?=$alumno->nombreYapellido?> </h3> 
             <h3> Fecha de Nacimiento: <?=$alumno->nacimiento?> </h3> 
             <h3> Peso: <?=$alumno->peso?> </h3> 
             <h3> Altura: <?=$alumno->altura?> </h3> 
-            <h3> Rutina de Ejercicios N°: <?=$alumno->id_rutina?>
-            | <a href="alumno/<?=$alumno->id_alumno?>" title="Ver la Rutina del Alumno: <?=$alumno->nombre?>" >Verla</a> |
+            <h3> Rutina: <?=$alumno->nombre?>
+            | <a href="rutina/<?=$alumno->id_rutina?>" title="Ver la Rutina del Alumno: <?=$alumno->nombreYapellido?>" >Verla</a> |
             </h3>
         </article>
         <aside>

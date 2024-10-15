@@ -7,9 +7,9 @@ class AluModel extends Model{
     //  Funciones de la Clase
     public function obtenerTodosAlumnos() {
         //  Preparo la consulta
-        $query = $this->db->prepare('SELECT * FROM alumnos');
+        $query = $this->db->prepare('SELECT id_alumno , nombreYapellido FROM alumnos');
         //  Preparo la consulta ordenada por el nombre de manera ascendente
-        //  $query = $this->db->prepare('SELECT * FROM alumnos ORDER BY nombre ASC');
+        //  $query = $this->db->prepare('SELECT id_alumno , nombre FROM alumnos ORDER BY nombre ASC');
         //  Ejecuto la consulta
         $query->execute();
         //  Obtengo los datos en un arreglo de objetos
@@ -18,8 +18,15 @@ class AluModel extends Model{
         return $alumnos;
     }
 
+    public function obtenerTodosAlumnosPorRutina($id){
+        $query = $this->db->prepare('SELECT a.id_alumno , a.nombreYapellido , b.nombre FROM alumnos a INNER JOIN rutinas b ON a.id_rutina = b.id_rutina WHERE a.id_rutina = ?');
+        $query->execute([$id]);
+        $alumnos = $query->fetchAll(PDO::FETCH_OBJ);
+        return $alumnos;
+    }
+
     public function obtenerUnAlumno($id) { 
-        $query = $this->db->prepare('SELECT * FROM alumnos WHERE id_alumno = ?');
+        $query = $this->db->prepare('SELECT a.* , b.nombre FROM alumnos a INNER JOIN rutinas b ON a.id_rutina = b.id_rutina WHERE a.id_alumno = ?');
         $query->execute([$id]);   
         $alumno = $query->fetch(PDO::FETCH_OBJ);
         return $alumno;
@@ -32,7 +39,7 @@ class AluModel extends Model{
     }
 
     public function addAlumno($nombre , $fecha , $peso , $altura , $rutina) { 
-        $query = $this->db->prepare('INSERT INTO alumnos ( nombre , nacimiento , peso , altura , id_rutina ) VALUES ( ? , ? , ? , ? , ? )');
+        $query = $this->db->prepare('INSERT INTO alumnos ( nombreYapellido , nacimiento , peso , altura , id_rutina ) VALUES ( ? , ? , ? , ? , ? )');
         $query->execute([$nombre , $fecha , $peso , $altura , $rutina]);
         return;
     }

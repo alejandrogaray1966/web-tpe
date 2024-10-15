@@ -1,0 +1,46 @@
+<?php require_once "templates/header.phtml" ?>
+
+        <article>
+            <h3>Mostrando <?=$cantidad?> Rutinas</h3>
+            <ul>
+            <?php foreach($rutinas as $rutina): ?>
+                <li>
+                    | <a href="rutina/<?=$rutina->id_rutina?>" title="Ver la Ficha de la Rutina: <?=$rutina->nombre?>" >Ver</a>
+                    <?php if ( $GLOBALS['usuario'] == "Administrador" ) { ?>
+                        | <a href="rutina/<?=$rutina->id_rutina?>" title="Modificar los Datos de: <?=$rutina->nombre?>" >Modificar</a>
+                        | <a href="desacoplar/<?=$rutina->id_rutina?>" title="Borrar la Rutina: <?=$rutina->nombre?>" >Borrar</a>
+                    <?php } ?>    
+                    <?php $rutina->nombre = substr($rutina->nombre,0,25) ?>
+                    | <b><?=$rutina->nombre?></b>
+                </li>
+            <?php endforeach ?>
+            </ul>
+        </article>
+        <aside>
+            <?php if ( $GLOBALS['usuario'] == "Administrador" ) { ?>
+                <h4> Para agregar una nueva Rutina... </h4>
+                <h4> Complete el Formulario </h4>         
+                <form action="acoplar" method="POST">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" name="Nombre" placeholder="Ingrese el nombre..." value="" required/>
+                    <label for="Entrada">Entrada:</label>
+                    <input type="text" name="Entrada" placeholder="Entrada en calor..." value="" />
+                    <label for="Pecho">Pecho:</label>
+                    <input type="text" name="Pecho" placeholder="Ejercicios para el pecho..." value="" />
+                    <label for="Espalda">Espalda:</label>
+                    <input type="text" name="Espalda" placeholder="Ejercicios para la espalda..." value="" />
+                    <label for="Piernas">Piernas:</label>
+                    <input type="text" name="Piernas" placeholder="Ejercicios para las piernas..." value="" />
+                    <br>
+                    <button type="submit">Aceptar</button>
+                </form>
+            <?php } else { ?>
+                <h3>Nota:</h3>
+                <ul>
+                    <li>Puede acceder a ver la Ficha de la Rutina</li>
+                    <li>Presione en VER para lograrlo</li>
+                </ul>
+            <?php } ?>
+        </aside>
+
+<?php require_once "templates/footer.phtml" ?>

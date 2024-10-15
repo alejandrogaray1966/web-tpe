@@ -1,0 +1,29 @@
+<?php require_once "templates/header.phtml" ?>
+
+        <article>
+            <h4> Detalle de la Rutina </h4>
+            <h3> Nombre: <?=$rutina->nombre?> </h3> 
+            <h3> Entrada: <?=$rutina->entrada?> </h3> 
+            <h3> Pecho: <?=$rutina->pecho?> </h3> 
+            <h3> Espalda: <?=$rutina->espalda?> </h3> 
+            <h3> Piernas: <?=$rutina->piernas?> </h3> 
+            <h3> Alumnos asignados a esta Rutina: <?=$cantidad?>
+            <?php if ( $cantidad > 0 ) { ?>
+            | <a href="filtro/<?=$rutina->id_rutina?>" title="Ver los Alumnos: <?=$rutina->nombre?>" >Verlos</a> |
+            <?php } ?> 
+            </h3>
+        </article>
+        <aside>
+            <h3>Nota:</h3>
+            <ul>
+            <?php if ( $cantidad > 0 ) { ?>
+                <li>Puede acceder a ver los <?=$cantidad?> Alumnos asignados a estos Ejercicios...</li>
+                <li>Presione en Verlos para lograrlo</li>
+            <?php } else { ?> 
+                <li>Esta Rutina todavía no se le ha asignado a ningún Alumno...</li>
+                <li>Vaya a Alumnos y modifique la Rutina para alguno de ellos.</li>
+            <?php } ?> 
+            </ul>
+        </aside>
+
+<?php require_once "templates/footer.phtml" ?>
