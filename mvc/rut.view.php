@@ -22,6 +22,14 @@ class RutView {
         return;
     }
 
+    public function mostrarFormRutina($rutina,$alumnos) {
+        $pagina = "Rutina";
+        $titulo = "Ficha de la Rutina";
+        $cantidad = count($alumnos);
+        require_once 'templates/form_rutina.phtml';
+        return;
+    }
+
     public function showRutMensaje($mensaje) {
         echo ( $mensaje );
         echo ( "<script>window.alert('$mensaje');</script>" );

@@ -152,20 +152,10 @@ form {
     padding: 5%;
     border: solid 5px grey;
 }
-.contRadio , .contCheckbox {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-}
-input[type=text] , input[type=date] {
+input[type=text] , input[type=date] , select {
     font-size: 1em;
     font-style: normal;
     color: blue;
-}
-input[type=radio] , input[type=checkbox] {
-    margin-left: 10%;
-    width: 1.5em; 
-    height: 1.5em;
 }
 button {
     background-color: blue;

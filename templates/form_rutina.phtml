@@ -1,0 +1,40 @@
+<?php require_once "templates/header.phtml" ?>
+
+        <article>
+                <h4> Para modificar la Rutina... </h4>
+                <h4> Complete el Formulario </h4>         
+                <form action="actualizarRutina/<?=$rutina->id_rutina?>" method="POST">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" name="Nombre" placeholder="Ingrese el nombre..." value="<?=$rutina->nombre?>" required/>
+                    <label for="Entrada">Entrada:</label>
+                    <input type="text" name="Entrada" placeholder="Entrada en calor..." value="<?=$rutina->entrada?>" />
+                    <label for="Pecho">Pecho:</label>
+                    <input type="text" name="Pecho" placeholder="Ejercicios para el pecho..." value="<?=$rutina->pecho?>" />
+                    <label for="Espalda">Espalda:</label>
+                    <input type="text" name="Espalda" placeholder="Ejercicios para la espalda..." value="<?=$rutina->espalda?>" />
+                    <label for="Piernas">Piernas:</label>
+                    <input type="text" name="Piernas" placeholder="Ejercicios para las piernas..." value="<?=$rutina->piernas?>" />
+                    <br>
+                    <button type="submit">Aceptar</button>
+                </form>
+                <br>
+                <h3> Alumnos asignados a esta Rutina: <?=$cantidad?>
+                <?php if ( $cantidad > 0 ) { ?>
+                | <a href="filtro/<?=$rutina->id_rutina?>" title="Ver los Alumnos: <?=$rutina->nombre?>" >Verlos</a> |
+                <?php } ?> 
+                </h3>
+        </article>
+        <aside>
+            <h3>Nota:</h3>
+            <ul>
+            <?php if ( $cantidad > 0 ) { ?>
+                <li>Puede acceder a ver los <?=$cantidad?> Alumnos asignados a estos Ejercicios...</li>
+                <li>Presione en Verlos para lograrlo</li>
+            <?php } else { ?> 
+                <li>Esta Rutina todavía no se le ha asignado a ningún Alumno...</li>
+                <li>Vaya a Alumnos y modifique la Rutina para alguno de ellos.</li>
+            <?php } ?> 
+            </ul>
+        </aside>
+
+<?php require_once "templates/footer.phtml" ?>

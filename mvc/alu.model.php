@@ -38,9 +38,9 @@ class AluModel extends Model{
         return;
     }
 
-    public function addAlumno($nombre , $fecha , $peso , $altura , $rutina) { 
-        $query = $this->db->prepare('INSERT INTO alumnos ( nombreYapellido , nacimiento , peso , altura , id_rutina ) VALUES ( ? , ? , ? , ? , ? )');
-        $query->execute([$nombre , $fecha , $peso , $altura , $rutina]);
+    public function addAlumno($nombre , $fecha , $peso , $altura , $rutina , $foto ) { 
+        $query = $this->db->prepare('INSERT INTO alumnos ( nombreYapellido , nacimiento , peso , altura , id_rutina , foto ) VALUES ( ? , ? , ? , ? , ? , ? )');
+        $query->execute([$nombre , $fecha , $peso , $altura , $rutina , $foto ]);
         return;
     }
 

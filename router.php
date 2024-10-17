@@ -20,19 +20,23 @@ $usuario = "Administrador";
 //  about           ->  home.controller     ->  showAbout()
 //  notdone         ->  home.controller     ->  showNotDone()
 //  default         ->  home.controller     ->  showPage404()
-//  ------- Alumnos ------------------------------------------------
-//  alumnos         ->  alu.controller      ->  showAlumnos()
-//  alumno/:ID      ->  alu.controller      ->  showAlumno($id)     ****  foto del alumno  ***
-//  agregar         ->  alu.controller      ->  agregarAlumno()     ****  select de rutinas  ***
-//  eliminar/:ID    ->  alu.controller      ->  eliminarAlumno($id)
-//  ------- Filtros ------------------------------------------------
+//  ---------- Alumnos ---------------------------------------------------
+//  alumnos                 ->  alu.controller  ->  showAlumnos()
+//  alumno/:ID              ->  alu.controller  ->  showAlumno($id)        ****  foto del alumno  ***
+//  agregar                 ->  alu.controller  ->  agregarAlumno()     
+//  eliminar/:ID            ->  alu.controller  ->  eliminarAlumno($id)
+//  modificar/:ID           ->  alu.controller  ->  mostrarFormAlumno($id)      *** en desarrollo ***
+//  modificarAlumno/:ID     ->  alu.controller  ->  modificarAlumno($id)        *** en desarrollo ***
+//  ----------- Filtros --------------------------------------------------
 //  filtro/:ID      ->  alu.controller      ->  filtroPorRutina($id)
-//  ------- Rutinas ------------------------------------------------
-//  rutinas         ->  rut.controller      ->  showRutinas()
-//  rutina/:ID      ->  rut.controller      ->  showRutina($id)
-//  acoplar         ->  rut.controller      ->  agregarRutina()
-//  desacoplar/:ID  ->  rut.controller      ->  eliminarRutina($id)
-//  ----------------------------------------------------------------
+//  ------------ Rutinas -------------------------------------------------
+//  rutinas                 ->  rut.controller  ->  showRutinas()
+//  rutina/:ID              ->  rut.controller  ->  showRutina($id)
+//  acoplar                 ->  rut.controller  ->  agregarRutina()
+//  desacoplar/:ID          ->  rut.controller  ->  eliminarRutina($id)
+//  actualizar/:ID          ->  rut.controller  ->  mostrarFormRutina($id)
+//  actualizarRutina/:ID    ->  rut.controller  ->  actualizarRutina($id)
+//  ----------------------------------------------------------------------
 
 //  Acción por defecto si no se envía ninguna
 if (!empty( $_GET['action'])) {
@@ -93,12 +97,32 @@ switch ($params[0]) {
         $alumnos = $aluController->obtenerTodosAlumnosPorRutina($id);
         $rutController->eliminarRutina($id,$alumnos);
         break;
+    case 'actualizar':
+        $id = $params[1];
+        $alumnos = $aluController->obtenerTodosAlumnosPorRutina($id);
+        $rutController->mostrarFormRutina($id,$alumnos);
+        break;
+    case 'actualizarRutina':
+        $id = $params[1];
+        $rutController->actualizarRutina($id);
+        break;
 //  ------- Default -----------------------------------------------
     default: 
         $homeController->showPage404();
         break;
 }
- 
+
+  //  case 'formEditarProducto':
+    //      $id = $params[1];
+    //      $cats = $catController->obtenerCategorias();
+    //      $prodController->mostrarFormEditarProducto($id,$cats);
+    //      break;     
+    //  case 'actualizarProducto':
+    //      $id = $params[1];
+    //      $cats = $catController->obtenerCategorias(); 
+    //      $prodController->actualizarProducto($id,$cats);
+    //      break;      
+
 //  $authController = new AuthController();
 
     //  case 'login':
@@ -112,37 +136,6 @@ switch ($params[0]) {
     //  case 'registrar':
     //      $authController->registrarUsuario();
     //      break;  
-    //  case 'productos':
-    //      $cats = $catController->obtenerCategorias();
-    //      $prodController->mostrarProductos($cats);
-    //      break;
-    //  case 'nuevoProducto':
-    //      $cats = $catController->obtenerCategorias();
-    //      $prodController->agregarProducto($cats); 
-    //      break;
-    //  case 'formEditarProducto':
-    //      $id = $params[1];
-    //      $cats = $catController->obtenerCategorias();
-    //      $prodController->mostrarFormEditarProducto($id,$cats);
-    //      break;     
-    //  case 'actualizarProducto':
-    //      $id = $params[1];
-    //      $cats = $catController->obtenerCategorias(); 
-    //      $prodController->actualizarProducto($id,$cats);
-    //      break;      
-    //  case 'formEditarCategoria':
-    //      $id = $params[1];
-    //      $catController->mostrarFormEditCategoria($id);
-    //      break;
-    //  case 'editarCategoria':
-    //      $id = $params[1];
-    //      $catController->actualizarCategoria($id);
-    //      break;
-    //  case'filtroCategorias':
-    //      $id = $params[1];
-    //      $cats = $catController->obtenerCategorias();
-    //      $prodController->mostrarProductosPorId($id,$cats);
-    //      break;                     
 
 
 ?>

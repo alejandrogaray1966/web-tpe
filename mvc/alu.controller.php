@@ -80,7 +80,8 @@ class AluController {
                 $peso = htmlspecialchars($_POST['Peso']);
                 $altura = htmlspecialchars($_POST['Altura']);
                 $rutina = $_POST['Rutina'];
-                $this->model->addAlumno( $nombre , $fecha , $peso , $altura , $rutina );
+                $foto = "images/alumnonuevo.jpeg";
+                $this->model->addAlumno( $nombre , $fecha , $peso , $altura , $rutina , $foto );
                 $this->view->showMensaje("El Alumno se ha agregado con éxito...");    
             };
         };

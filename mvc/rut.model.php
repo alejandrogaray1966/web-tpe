@@ -37,6 +37,12 @@ class RutModel extends Model{
         return;
     }
 
+    public function updRutina( $id , $nombre , $entrada , $pecho , $espalda , $piernas ) {
+        $query = $this->db->prepare('UPDATE rutinas SET nombre = ? , entrada = ? , pecho = ? , espalda  = ? , piernas = ? WHERE id_rutina = ?');
+        $query->execute([$nombre , $entrada , $pecho , $espalda , $piernas , $id]);
+        return;
+    }
+
 }
 
 ?>

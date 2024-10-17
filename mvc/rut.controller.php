@@ -85,6 +85,33 @@ class RutController {
         return;      
     }
 
+    public function mostrarFormRutina($id,$alumnos) {
+        if ( $GLOBALS['usuario'] == "Administrador" ) {
+            $rutina = $this->model->obtenerUnaRutina($id);
+            $this->view->mostrarFormRutina($rutina,$alumnos);
+        };
+        return;      
+    }
+
+    public function actualizarRutina($id) {
+        if ( $GLOBALS['usuario'] == "Administrador" ) {
+            if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
+                $this->view->showRutMensaje("Debe completar el nombre de la Rutina...");
+            } else {
+                $nombre = htmlspecialchars($_POST['Nombre']);
+                $entrada = htmlspecialchars($_POST['Entrada']);
+                $pecho = htmlspecialchars($_POST['Pecho']);
+                $espalda = htmlspecialchars($_POST['Espalda']);
+                $piernas = htmlspecialchars($_POST['Piernas']);
+                $this->model->updRutina( $id , $nombre , $entrada , $pecho , $espalda , $piernas );
+                $this->view->showRutMensaje("La Rutina se ha modificado con éxito...");    
+            };
+        };
+        // Redirijo al listado de rutinas 
+        header('Location: ' . BASE_URL . 'rutinas');
+        return;      
+    }
+    
 }
 
 ?>
