@@ -7,7 +7,7 @@
                 <li>
                     | <a href="alumno/<?=$alumno->id_alumno?>" title="Ver la Ficha del Alumno: <?=$alumno->nombreYapellido?>" >Ver</a>
                     <?php if ( $GLOBALS['usuario'] == "Administrador" ) { ?>
-                        | <a href="alumno/<?=$alumno->id_alumno?>" title="Modificar los Datos de: <?=$alumno->nombreYapellido?>" >Modificar</a>
+                        | <a href="modificar/<?=$alumno->id_alumno?>" title="Modificar los Datos de: <?=$alumno->nombreYapellido?>" >Modificar</a>
                         | <a href="eliminar/<?=$alumno->id_alumno?>" title="Borrar al Alumno: <?=$alumno->nombreYapellido?>" >Borrar</a>
                     <?php } ?> 
                     <?php $alumno->nombreYapellido = substr($alumno->nombreYapellido,0,25) ?>   

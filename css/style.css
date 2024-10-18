@@ -105,7 +105,7 @@ article , aside {
     margin-right: 5%;
 }
 figure {
-    width: 80%;
+    width: 70%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -200,7 +200,7 @@ button {
         margin-right: 5%;
     }
     figure {
-        width: 80%;
+        width: 70%;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;

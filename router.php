@@ -22,11 +22,11 @@ $usuario = "Administrador";
 //  default         ->  home.controller     ->  showPage404()
 //  ---------- Alumnos ---------------------------------------------------
 //  alumnos                 ->  alu.controller  ->  showAlumnos()
-//  alumno/:ID              ->  alu.controller  ->  showAlumno($id)        ****  foto del alumno  ***
+//  alumno/:ID              ->  alu.controller  ->  showAlumno($id)
 //  agregar                 ->  alu.controller  ->  agregarAlumno()     
 //  eliminar/:ID            ->  alu.controller  ->  eliminarAlumno($id)
-//  modificar/:ID           ->  alu.controller  ->  mostrarFormAlumno($id)      *** en desarrollo ***
-//  modificarAlumno/:ID     ->  alu.controller  ->  modificarAlumno($id)        *** en desarrollo ***
+//  modificar/:ID           ->  alu.controller  ->  mostrarFormAlumno($id)
+//  modificarAlumno/:ID     ->  alu.controller  ->  modificarAlumno($id)
 //  ----------- Filtros --------------------------------------------------
 //  filtro/:ID      ->  alu.controller      ->  filtroPorRutina($id)
 //  ------------ Rutinas -------------------------------------------------
@@ -74,6 +74,15 @@ switch ($params[0]) {
         $id = $params[1];
         $aluController->eliminarAlumno($id);
         break;
+    case 'modificar':
+        $id = $params[1];
+        $rutinas = $rutController->obtenerTodasRutinas();
+        $aluController->mostrarFormAlumno($id,$rutinas);
+        break;
+    case 'modificarAlumno':
+        $id = $params[1];
+        $aluController->modificarAlumno($id);
+        break;
 //  ------- Filtros -----------------------------------------------
     case 'filtro':
         $id = $params[1];
@@ -112,17 +121,6 @@ switch ($params[0]) {
         break;
 }
 
-  //  case 'formEditarProducto':
-    //      $id = $params[1];
-    //      $cats = $catController->obtenerCategorias();
-    //      $prodController->mostrarFormEditarProducto($id,$cats);
-    //      break;     
-    //  case 'actualizarProducto':
-    //      $id = $params[1];
-    //      $cats = $catController->obtenerCategorias(); 
-    //      $prodController->actualizarProducto($id,$cats);
-    //      break;      
-
 //  $authController = new AuthController();
 
     //  case 'login':
@@ -136,6 +134,5 @@ switch ($params[0]) {
     //  case 'registrar':
     //      $authController->registrarUsuario();
     //      break;  
-
 
 ?>

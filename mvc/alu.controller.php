@@ -90,6 +90,37 @@ class AluController {
         return;      
     }
 
+    public function mostrarFormAlumno($id,$rutinas) {
+        if ( $GLOBALS['usuario'] == "Administrador" ) {
+            $alumno = $this->model->obtenerUnAlumno($id);
+            $this->view->mostrarFormAlumno($alumno,$rutinas);
+        };
+        return;      
+    }
+
+    public function modificarAlumno($id) {
+        if ( $GLOBALS['usuario'] == "Administrador" ) {
+            if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
+                $this->view->showMensaje("Debe completar el nombre del Alumno...");
+            } else {
+                $nombre = htmlspecialchars($_POST['Nombre']);
+                $fecha = $_POST['Fecha'];
+                $peso = htmlspecialchars($_POST['Peso']);
+                $altura = htmlspecialchars($_POST['Altura']);
+                $rutina = $_POST['Rutina'];
+                if($_FILES['Imagen']['type'] == "image/jpg" || $_FILES['Imagen']['type'] == "image/jpeg" || $_FILES['Imagen']['type'] == "image/png" ) {
+                    $this->model->updAlumno( $id , $nombre , $fecha , $peso , $altura , $rutina , $_FILES['Imagen'] );
+                }else{
+                    $this->model->updAlumno( $id , $nombre , $fecha , $peso , $altura , $rutina );
+                }
+                $this->view->showMensaje("El Alumno se ha agregado con éxito...");    
+            };
+        };
+        // Redirijo al listado de alumnos 
+        header('Location: ' . BASE_URL . 'alumnos');
+        return;  
+    }
+
 }
 
 ?>

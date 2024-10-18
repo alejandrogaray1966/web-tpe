@@ -1,0 +1,48 @@
+<?php require_once "templates/header.phtml" ?>
+
+        <article>
+                <h4> Para modificar el Alumno... </h4>
+                <h4> Complete el Formulario </h4>    
+                <form action="modificarAlumno/<?=$alumno->id_alumno?>" method="POST" enctype="multipart/form-data">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" name="Nombre" placeholder="Ingrese nombre y apellido..." value="<?=$alumno->nombreYapellido?>" required/>
+                    <label for="Fecha">Fecha de Nacimiento:</label>
+                    <input type="date" name="Fecha" value="<?=$alumno->nacimiento?>" min="1924-10-22" max="2024-10-22">
+                    <label for="Peso">Peso:</label>
+                    <input type="text" name="Peso" value="<?=$alumno->peso?>" >
+                    <label for="Altura">Altura:</label>
+                    <input type="text" name="Altura" value="<?=$alumno->altura?>" >
+                    <label for="Rutina">Rutina de Ejercicios:</label>
+                        <select name="Rutina" >
+                            <?php foreach($rutinas as $rutina): ?>
+                                <?php if ( $rutina->id_rutina == $alumno->id_rutina ) { ?>
+                                    <option value="<?=$rutina->id_rutina?>" selected><?=$rutina->nombre?></option>
+                                <?php } else { ?>
+                                    <option value="<?=$rutina->id_rutina?>"><?=$rutina->nombre?></option>
+                                <?php } ?> 
+                            <?php endforeach ?>  
+                        </select>
+                    </label>
+                    <label for="Imagen"> Imagen: </label>
+                             <input type="file" id="imageToUpload" name=Imagen accept="image/*"></label> 
+
+                    <br>
+                    <button type="submit">Aceptar</button>
+                </form>
+        </article>
+        <aside>
+            <h3>Foto del Alumno:</h3>
+            <figure>
+                <img src="<?=$alumno->foto?>" alt="Foto del Alumno">
+            </figure>
+            <h3> Rutina: <?=$alumno->nombre?>
+                | <a href="rutina/<?=$alumno->id_rutina?>" title="Ver la Rutina del Alumno: <?=$alumno->nombreYapellido?>" >Verla</a> |
+            </h3>
+            <h3>Nota:</h3>
+            <ul>
+                <li>Puede acceder a ver la Rutina de Ejercicios</li>
+                <li>Presione en VERLA para lograrlo</li>
+            </ul>
+        </aside>
+
+<?php require_once "templates/footer.phtml" ?>

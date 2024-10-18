@@ -35,6 +35,13 @@ class AluView {
         return;
     }
 
+    public function mostrarFormAlumno($alumno,$rutinas) {
+        $pagina = "Alumno";
+        $titulo = "Ficha del Alumno";
+        require_once 'templates/form_alumno.phtml';
+        return;
+    }
+
     public function showMensaje($mensaje) {
         echo ( $mensaje );
         echo ( "<script>window.alert('$mensaje');</script>" );

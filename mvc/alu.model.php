@@ -44,6 +44,26 @@ class AluModel extends Model{
         return;
     }
 
+    public function updAlumno( $id , $nombre , $fecha , $peso , $altura , $rutina , $imagen = null) {
+        $rutaImg = null;
+        if($imagen){
+            $rutaImg = $this->subirImagen($imagen);
+            $query = $this->db->prepare('UPDATE alumnos SET nombreYapellido = ? , nacimiento = ? , peso = ? , altura = ? , id_rutina = ? , foto = ? WHERE id_alumno = ? ');
+            $query->execute([$nombre , $fecha , $peso , $altura , $rutina , $rutaImg , $id]);
+        } else {
+            $query = $this->db->prepare('UPDATE alumnos SET nombreYapellido = ? , nacimiento = ? , peso = ? , altura = ? , id_rutina = ? WHERE id_alumno = ? ');
+            $query->execute([$nombre , $fecha , $peso , $altura , $rutina , $id]);
+        }
+        return;
+    }
+
+    public function subirImagen($imagen){
+        $destino = "images/alumnos/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
+        move_uploaded_file($imagen['tmp_name'], $destino);
+        //$destino = ".".$destino;
+        return $destino;
+    }
+
 }
 
 ?>
