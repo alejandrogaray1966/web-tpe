@@ -16,4 +16,5 @@ Trabajo Práctico Especial
 ## Relación 1 a N
 ![Foto de relación](relacion.png)
 
-<!-- Fecha de entrega primera parte: 16/9/24 -->
+<!-- Fecha de entrega primera parte: 16/09/24 -->  
+<!-- Fecha de entrega primera parte: 19/10/24 -->  

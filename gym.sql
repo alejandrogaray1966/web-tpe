@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2024 a las 22:29:27
+-- Tiempo de generación: 19-10-2024 a las 08:31:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -42,29 +42,25 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`id_alumno`, `nombreYapellido`, `nacimiento`, `peso`, `altura`, `id_rutina`, `foto`) VALUES
-(1, 'Julio Checa', '2014-09-17', 60.8, 1.66, 1, 'images/alumnonuevo.jpeg'),
+(1, 'Julio Checa', '2002-12-20', 60.8, 1.66, 1, 'images/alumnonuevo.jpeg'),
 (2, 'Miriam Landa', '1996-05-05', 65.8, 1.68, 1, 'images/alumnonuevo.jpeg'),
-(3, 'Fernando Greco', '1990-10-22', 70.5, 1.59, 2, 'images/alumnonuevo.jpeg'),
+(3, 'Fernando Greco', '1990-10-22', 70.5, 1.59, 2, 'images/alumnos/67134e16ef3d6.jpeg'),
 (4, 'Valeria Motschakow', '1989-11-27', 62.3, 1.61, 2, 'images/alumnonuevo.jpeg'),
 (5, 'Guillermo Brown', '1981-05-17', 80.9, 1.75, 3, 'images/alumnonuevo.jpeg'),
-(6, 'Juan Manuel Porcel', '1978-06-25', 80.7, 1.65, 1, ''),
-(7, 'Marcelo Robertson', '1975-12-30', 86.3, 1.72, 2, ''),
-(8, 'Adriana Wooley', '1989-01-13', 55.9, 1.59, 3, ''),
-(9, 'Diego Fissina', '2001-10-09', 80.5, 1.78, 3, ''),
-(10, 'Ismael Masias', '2002-11-13', 90.3, 1.76, 3, ''),
-(11, 'Valeria Zunino', '2024-12-14', 56.9, 1.66, 3, ''),
-(12, 'Silvana Toledo', '2003-08-12', 56.8, 1.65, 3, ''),
-(15, 'Juan Segundo', '0000-00-00', 0, 0, 1, ''),
-(16, 'Juan Sebastian', '0000-00-00', 0, 0, 1, ''),
-(17, 'Juan Marcelo', '0000-00-00', 0, 0, 1, ''),
-(18, 'Juan Manuel', '0000-00-00', 0, 0, 1, ''),
-(19, 'Juan Ignacio Torrissi', '0000-00-00', 0, 0, 1, ''),
-(27, 'pedrito', '0000-00-00', 0, 0, 1, ''),
-(30, 'alice', '0000-00-00', 0, 0, 1, ''),
-(34, 'Mariano Cesario', '1980-04-26', 78.5, 1.75, 1, ''),
-(45, 'Roxana Miranda', '1999-09-09', 68.9, 1.69, 2, ''),
-(46, '&lt;&quot;juan&quot;&gt;', '2000-06-15', 0, 0, 1, ''),
-(47, 'Vicente Contreras', '1999-06-14', 86.5, 1.7, 3, '');
+(6, 'Juan Manuel Porcel', '1978-06-25', 80.7, 1.65, 3, 'images/alumnonuevo.jpeg'),
+(7, 'Marcelo Robertson', '1975-12-30', 86.3, 1.72, 2, 'images/alumnonuevo.jpeg'),
+(8, 'Adriana Wooley', '1989-01-13', 55.9, 1.59, 3, 'images/alumnos/67134d082684e.jpeg'),
+(9, 'Diego Fissina', '2001-10-09', 80.5, 1.78, 25, 'images/alumnos/67134d74a1752.jpeg'),
+(10, 'Ismael Masias', '2002-11-13', 90.3, 1.76, 20, 'images/alumnonuevo.jpeg'),
+(11, 'Valeria Zunino', '2002-06-12', 56.9, 1.66, 3, 'images/alumnonuevo.jpeg'),
+(12, 'Silvana Toledo', '2003-08-12', 56.8, 1.65, 13, 'images/alumnonuevo.jpeg'),
+(15, 'Juan Segundo Castro', '1998-05-11', 98, 1.6, 5, 'images/alumnonuevo.jpeg'),
+(16, 'Nancy Lujan', '1999-02-02', 68, 1.64, 3, 'images/alumnos/6711d7f93a5de.jpg'),
+(17, 'Juan Marcelo Durdos', '2003-11-22', 65, 1.56, 25, 'images/alumnonuevo.jpeg'),
+(18, 'Cristina Nociti', '1999-03-09', 67, 1.73, 5, 'images/alumnos/67134dfab9d0c.jpeg'),
+(19, 'Juan Ignacio Torrissi', '0000-00-00', 0, 0, 3, 'images/alumnonuevo.jpeg'),
+(34, 'Mariano Cesario', '1980-04-26', 78.5, 1.75, 25, 'images/alumnonuevo.jpeg'),
+(45, 'Roxana Miranda', '1999-09-09', 68.9, 1.69, 3, 'images/alumnonuevo.jpeg');
 
 -- --------------------------------------------------------
 
@@ -83,7 +79,7 @@ CREATE TABLE `claves` (
 --
 
 INSERT INTO `claves` (`id_clave`, `usuario`, `contrasena`) VALUES
-(1, 'webadmin', 'admin');
+(1, 'webadmin', '$2y$10$H9yCQ/hfWD4oQw.HXAEcyOk6MRz0VguxS9/rl85/9AhM/PXBALYG6');
 
 -- --------------------------------------------------------
 
@@ -108,9 +104,10 @@ INSERT INTO `rutinas` (`id_rutina`, `nombre`, `entrada`, `pecho`, `espalda`, `pi
 (1, 'Principiante', 'abdominales 3 x 5', 'press banca con mancuernas 3 x 6', 'remo con mancuernas 3 x 7', 'zancadas con mancuerna 3 x 8'),
 (2, 'Intermedio', 'lagartijas 3 x 6', 'press banca con barra 3 x 7', 'remo con barra 3 x 8', 'sentadilla con barra 3 x 9'),
 (3, 'Experto', 'peso muerto con barra 3 x 10', 'polea pecho 3 x 8', 'remo 3 x 9', 'prensa 3 x 10'),
-(5, 'Jovenes', '20 lagartijas', '10 banco', 'espinales', 'sentadillas'),
-(7, 'Jovenes xx', '20 flexiones', '', '', ''),
-(13, 'Adultos Mayor', '10 lagartijas', 'acostado mancuernas arriba', 'sentado mancuernas arriba', 'sentadillas con disco');
+(5, 'Jovenes', '20 lagartijas', '10 banco con barra 10 Kg.', 'espinales', 'sentadillas'),
+(13, 'Adultos Mayor', '10 lagartijas', 'acostado mancuernas arriba', 'sentado mancuernas arriba', 'sentadillas con disco'),
+(20, 'Maratonistas', 'bicicleta 30 minutos', 'polea 3 series', 'polea 3 series', 'sentadilla con barra de 10 Kg.'),
+(25, 'Ciclistas', '2 series de 10 de abdominales', 'extensiones con mancuerna 5 Kg.', 'polea 2 series', 'press  inclinado 60 Kg.');
 
 --
 -- Índices para tablas volcadas
@@ -146,7 +143,7 @@ ALTER TABLE `rutinas`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `claves`
@@ -158,7 +155,7 @@ ALTER TABLE `claves`
 -- AUTO_INCREMENT de la tabla `rutinas`
 --
 ALTER TABLE `rutinas`
-  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas

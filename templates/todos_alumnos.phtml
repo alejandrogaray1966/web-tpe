@@ -1,4 +1,4 @@
-<?php require_once "templates/header.phtml" ?>
+<?php require "templates/header.phtml" ?>
 
         <article>
             <h3>Mostrando <?=$cantidad?> Alumnos</h3>
@@ -6,7 +6,7 @@
             <?php foreach($alumnos as $alumno): ?>
                 <li>
                     | <a href="alumno/<?=$alumno->id_alumno?>" title="Ver la Ficha del Alumno: <?=$alumno->nombreYapellido?>" >Ver</a>
-                    <?php if ( $GLOBALS['usuario'] == "Administrador" ) { ?>
+                    <?php if (isset($_SESSION['ID_USUARIO'])) { ?>
                         | <a href="modificar/<?=$alumno->id_alumno?>" title="Modificar los Datos de: <?=$alumno->nombreYapellido?>" >Modificar</a>
                         | <a href="eliminar/<?=$alumno->id_alumno?>" title="Borrar al Alumno: <?=$alumno->nombreYapellido?>" >Borrar</a>
                     <?php } ?> 
@@ -17,7 +17,7 @@
             </ul>
         </article>
         <aside>
-            <?php if ( $GLOBALS['usuario'] == "Administrador" ) { ?>
+        <?php if (isset($_SESSION['ID_USUARIO'])) { ?>
                 <h4> Para agregar un nuevo Alumno... </h4>
                 <h4> Complete el Formulario </h4>         
                 <form action="agregar" method="POST">

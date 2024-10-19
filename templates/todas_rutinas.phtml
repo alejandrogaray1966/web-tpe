@@ -1,4 +1,4 @@
-<?php require_once "templates/header.phtml" ?>
+<?php require "templates/header.phtml" ?>
 
         <article>
             <h3>Mostrando <?=$cantidad?> Rutinas</h3>
@@ -6,7 +6,7 @@
             <?php foreach($rutinas as $rutina): ?>
                 <li>
                     | <a href="rutina/<?=$rutina->id_rutina?>" title="Ver la Ficha de la Rutina: <?=$rutina->nombre?>" >Ver</a>
-                    <?php if ( $GLOBALS['usuario'] == "Administrador" ) { ?>
+                    <?php if (isset($_SESSION['ID_USUARIO'])) { ?>
                         | <a href="actualizar/<?=$rutina->id_rutina?>" title="Modificar los Datos de: <?=$rutina->nombre?>" >Modificar</a>
                         | <a href="desacoplar/<?=$rutina->id_rutina?>" title="Borrar la Rutina: <?=$rutina->nombre?>" >Borrar</a>
                     <?php } ?>    
@@ -17,7 +17,7 @@
             </ul>
         </article>
         <aside>
-            <?php if ( $GLOBALS['usuario'] == "Administrador" ) { ?>
+        <?php if (isset($_SESSION['ID_USUARIO'])) { ?>
                 <h4> Para agregar una nueva Rutina... </h4>
                 <h4> Complete el Formulario </h4>         
                 <form action="acoplar" method="POST">

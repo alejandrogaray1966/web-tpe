@@ -1,0 +1,25 @@
+<?php require "templates/header.phtml" ?>
+
+        <article>
+                <h4> Para ingresar como ADMINISTRADOR... </h4>
+                <h4> Complete el Formulario </h4>         
+                <form action="validar" method="POST">
+                    <label for="Nombre">Nombre de Usuario:</label>
+                    <input type="text" name="Nombre" placeholder="Ingrese el nombre..." value="" required/>
+                    <label for="Contrasena">Contraseña:</label>
+                    <input type="password" name="Contrasena" placeholder="Ingrese la contraseña..." value="" required/>
+                    <br>
+                    <button type="submit">Aceptar</button>
+                </form>
+                <br>
+        </article>
+        <aside>
+            <h3>Nota:</h3>
+            <ul>
+                <li>Una vez completado el Formulario...</li>
+                <li>Podrá realizar ABM de los Alumnos</li>
+                <li>Y podrá realizar ABM de las Rutinas</li>
+            </ul>
+        </aside>
+
+<?php require_once "templates/footer.phtml" ?>

@@ -19,6 +19,7 @@ class AluController {
 
     //  Funciones de la Clase
     public function showAlumnos($rutinas) {
+        Usuario::iniciarSesion();
         // Obtengo los alumnos de la base de datos
         $alumnos = $this->model->obtenerTodosAlumnos();
         // Mando todos los alumnos a la vista
@@ -27,6 +28,7 @@ class AluController {
     }
 
     public function showAlumno($id) {
+        Usuario::iniciarSesion();
         // Obtengo el alumno de la base de datos según su id_alumno
         $alumno = $this->model->obtenerUnAlumno($id);
         if (!$alumno) {
@@ -42,6 +44,7 @@ class AluController {
     }
 
     public function obtenerTodosAlumnosPorRutina($id){
+        Usuario::iniciarSesion();
         $alumnos = null;
         if ( !empty($id) ) {
             $alumnos = $this->model->obtenerTodosAlumnosPorRutina($id);
@@ -50,13 +53,15 @@ class AluController {
     }
 
     public function filtroPorRutina($id,$rutinas) {
+        Usuario::iniciarSesion();
         $alumnos = $this->model->obtenerTodosAlumnosPorRutina($id);
         $this->view->mostrarTodosAlumnosPorRutina($alumnos,$rutinas);
         return;
     }
 
     public function eliminarAlumno($id) {
-        if ( $GLOBALS['usuario'] == "Administrador" ) {
+        Usuario::verificar();
+        
             $alumno = $this->model->obtenerUnAlumno($id);
             if (!$alumno) {
                 $this->view->showMensaje("El Alumno no existe..."); 
@@ -64,14 +69,15 @@ class AluController {
                 $this->model->delAlumno($id);
                 $this->view->showMensaje("El Alumno se ha borrado con éxito..."); 
             };
-        };   
+       
         // Redirijo al listado de alumnos 
         header('Location: ' . BASE_URL . 'alumnos'); 
         return;
     }
 
     public function agregarAlumno() {
-        if ( $GLOBALS['usuario'] == "Administrador" ) {
+        Usuario::verificar();
+ 
             if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
                 $this->view->showMensaje("Debe completar el nombre del Alumno...");
             } else {
@@ -84,22 +90,24 @@ class AluController {
                 $this->model->addAlumno( $nombre , $fecha , $peso , $altura , $rutina , $foto );
                 $this->view->showMensaje("El Alumno se ha agregado con éxito...");    
             };
-        };
+
         // Redirijo al listado de alumnos 
         header('Location: ' . BASE_URL . 'alumnos');
         return;      
     }
 
     public function mostrarFormAlumno($id,$rutinas) {
-        if ( $GLOBALS['usuario'] == "Administrador" ) {
+        Usuario::verificar();
+
             $alumno = $this->model->obtenerUnAlumno($id);
             $this->view->mostrarFormAlumno($alumno,$rutinas);
-        };
+
         return;      
     }
 
     public function modificarAlumno($id) {
-        if ( $GLOBALS['usuario'] == "Administrador" ) {
+        Usuario::verificar();
+
             if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
                 $this->view->showMensaje("Debe completar el nombre del Alumno...");
             } else {
@@ -115,7 +123,7 @@ class AluController {
                 }
                 $this->view->showMensaje("El Alumno se ha agregado con éxito...");    
             };
-        };
+
         // Redirijo al listado de alumnos 
         header('Location: ' . BASE_URL . 'alumnos');
         return;  

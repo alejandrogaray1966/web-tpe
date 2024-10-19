@@ -1,4 +1,6 @@
 <?php
+
+//  Requiero de los Controladores
 require_once 'db/model.php';
 
 //  Defino la Clase que maneja la Base de Datos de los Alumnos
@@ -7,9 +9,9 @@ class AluModel extends Model{
     //  Funciones de la Clase
     public function obtenerTodosAlumnos() {
         //  Preparo la consulta
-        $query = $this->db->prepare('SELECT id_alumno , nombreYapellido FROM alumnos');
+        //  $query = $this->db->prepare('SELECT id_alumno , nombreYapellido FROM alumnos');
         //  Preparo la consulta ordenada por el nombre de manera ascendente
-        //  $query = $this->db->prepare('SELECT id_alumno , nombre FROM alumnos ORDER BY nombre ASC');
+        $query = $this->db->prepare('SELECT id_alumno , nombreYapellido FROM alumnos ORDER BY nombreYapellido ASC');
         //  Ejecuto la consulta
         $query->execute();
         //  Obtengo los datos en un arreglo de objetos

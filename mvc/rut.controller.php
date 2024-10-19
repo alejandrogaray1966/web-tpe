@@ -19,6 +19,7 @@ class RutController {
 
     //  Funciones de la Clase
     public function showRutinas() {
+        Usuario::iniciarSesion();
         // Obtengo las rutinas de la base de datos
         $rutinas = $this->model->obtenerTodasRutinas();
         // Mando todos las rutinas a la vista
@@ -27,6 +28,7 @@ class RutController {
     }
 
     public function showRutina($id,$alumnos) {
+        Usuario::iniciarSesion();
         // Obtengo la rutina de la base de datos según su id_rutina
         $rutina = $this->model->obtenerUnaRutina($id);
         if (!$rutina) {
@@ -42,13 +44,15 @@ class RutController {
     }
 
     public function obtenerTodasRutinas(){
+        Usuario::iniciarSesion();
         $rutinas = null;
         $rutinas = $this->model->obtenerTodasRutinas();
         return $rutinas;
     }
 
     public function eliminarRutina($id,$alumnos) {
-        if ( $GLOBALS['usuario'] == "Administrador" ) {
+        Usuario::verificar();
+  
             if ( empty($alumnos) ) {
                 $rutina = $this->model->obtenerUnaRutina($id);
                 if ( !$rutina ) {
@@ -60,14 +64,15 @@ class RutController {
             } else {
                 $this->view->showRutMensaje("La Rutina no se puede borrar, está asignada...");
             }
-        };   
+
         // Redirijo al listado de rutinas 
         header('Location: ' . BASE_URL . 'rutinas'); 
         return;
     }
 
     public function agregarRutina() {
-        if ( $GLOBALS['usuario'] == "Administrador" ) {
+        Usuario::verificar();
+  
             if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
                 $this->view->showRutMensaje("Debe completar el nombre de la Rutina...");
             } else {
@@ -79,22 +84,24 @@ class RutController {
                 $this->model->addRutina( $nombre , $entrada , $pecho , $espalda , $piernas );
                 $this->view->showRutMensaje("La Rutina se ha agregado con éxito...");    
             };
-        };
+
         // Redirijo al listado de rutinas 
         header('Location: ' . BASE_URL . 'rutinas');
         return;      
     }
 
     public function mostrarFormRutina($id,$alumnos) {
-        if ( $GLOBALS['usuario'] == "Administrador" ) {
+        Usuario::verificar();
+ 
             $rutina = $this->model->obtenerUnaRutina($id);
             $this->view->mostrarFormRutina($rutina,$alumnos);
-        };
+  
         return;      
     }
 
     public function actualizarRutina($id) {
-        if ( $GLOBALS['usuario'] == "Administrador" ) {
+        Usuario::verificar();
+
             if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
                 $this->view->showRutMensaje("Debe completar el nombre de la Rutina...");
             } else {
@@ -106,7 +113,7 @@ class RutController {
                 $this->model->updRutina( $id , $nombre , $entrada , $pecho , $espalda , $piernas );
                 $this->view->showRutMensaje("La Rutina se ha modificado con éxito...");    
             };
-        };
+
         // Redirijo al listado de rutinas 
         header('Location: ' . BASE_URL . 'rutinas');
         return;      

@@ -7,26 +7,27 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 require_once "mvc/home.controller.php";
 require_once "mvc/alu.controller.php";
 require_once "mvc/rut.controller.php";
+require_once "mvc/log.controller.php";
 $homeController = new HomeController;
 $aluController = new AluController;
 $rutController = new RutController;
+$logController = new LogController;
 
-//  Defino el tipo de USUARIO
-//  $usuario = "Sin Credenciales";
-$usuario = "Administrador";
+//  Defino el tipo titulo de USUARIO
+$usuario = "Bienvenido";
 
-//  ------- Tabla de Ruteo -----------------------------------------
+//  -------- Tabla de Ruteo ----------------------------------------------
 //  home            ->  home.controller     ->  showHome()
 //  about           ->  home.controller     ->  showAbout()
 //  notdone         ->  home.controller     ->  showNotDone()
 //  default         ->  home.controller     ->  showPage404()
 //  ---------- Alumnos ---------------------------------------------------
-//  alumnos                 ->  alu.controller  ->  showAlumnos()
-//  alumno/:ID              ->  alu.controller  ->  showAlumno($id)
-//  agregar                 ->  alu.controller  ->  agregarAlumno()     
-//  eliminar/:ID            ->  alu.controller  ->  eliminarAlumno($id)
-//  modificar/:ID           ->  alu.controller  ->  mostrarFormAlumno($id)
-//  modificarAlumno/:ID     ->  alu.controller  ->  modificarAlumno($id)
+//  alumnos             ->  alu.controller  ->  showAlumnos()
+//  alumno/:ID          ->  alu.controller  ->  showAlumno($id)
+//  agregar             ->  alu.controller  ->  agregarAlumno()     
+//  eliminar/:ID        ->  alu.controller  ->  eliminarAlumno($id)
+//  modificar/:ID       ->  alu.controller  ->  mostrarFormAlumno($id)
+//  modificarAlumno/:ID ->  alu.controller  ->  modificarAlumno($id)
 //  ----------- Filtros --------------------------------------------------
 //  filtro/:ID      ->  alu.controller      ->  filtroPorRutina($id)
 //  ------------ Rutinas -------------------------------------------------
@@ -36,6 +37,10 @@ $usuario = "Administrador";
 //  desacoplar/:ID          ->  rut.controller  ->  eliminarRutina($id)
 //  actualizar/:ID          ->  rut.controller  ->  mostrarFormRutina($id)
 //  actualizarRutina/:ID    ->  rut.controller  ->  actualizarRutina($id)
+//  ---- Usuarios --------------------------------------------------------
+//  login       ->  log.controller      ->  mostrarLogin()
+//  logout      ->  log.controller      ->  desloguear()
+//  validar     ->  log.controller      ->  verificarLogin()
 //  ----------------------------------------------------------------------
 
 //  Acción por defecto si no se envía ninguna
@@ -115,24 +120,20 @@ switch ($params[0]) {
         $id = $params[1];
         $rutController->actualizarRutina($id);
         break;
+//  ------- Usuarios ----------------------------------------------
+    case 'login':
+        $logController->mostrarLogin();
+        break;
+    case 'logout':
+        $logController->desloguear();
+        break;
+    case 'validar':
+        $logController->verificarLogin();
+        break;
 //  ------- Default -----------------------------------------------
     default: 
         $homeController->showPage404();
         break;
-}
-
-//  $authController = new AuthController();
-
-    //  case 'login':
-    //      $authController->mostrarLogin();
-    //      break;
-    //  case 'logout':
-    //      $authController->desloguear();    
-    //  case 'validar':
-    //      $authController->verificarLogin();
-    //      break;
-    //  case 'registrar':
-    //      $authController->registrarUsuario();
-    //      break;  
+}  
 
 ?>

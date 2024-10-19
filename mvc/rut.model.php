@@ -7,9 +7,9 @@ class RutModel extends Model{
     //  Funciones de la Clase
     public function obtenerTodasRutinas() {
         //  Preparo la consulta
-        $query = $this->db->prepare('SELECT id_rutina , nombre FROM rutinas');
+        //  $query = $this->db->prepare('SELECT id_rutina , nombre FROM rutinas');
         //  Preparo la consulta ordenada por el nombre de manera ascendente
-        //  $query = $this->db->prepare('SELECT id_rutina , nombre FROM rutinas ORDER BY nombre ASC');
+        $query = $this->db->prepare('SELECT id_rutina , nombre FROM rutinas ORDER BY nombre ASC');
         //  Ejecuto la consulta
         $query->execute();
         //  Obtengo los datos en un arreglo de objetos
