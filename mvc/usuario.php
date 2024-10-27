@@ -21,8 +21,6 @@ class Usuario {
         unset($_SESSION['ID_USUARIO']);
         unset($_SESSION['NOMBRE']);
         session_destroy();
-        // header('Location: ' . BASE_URL . 'login');
-        header('Location: ' . BASE_URL );
         return;
     }
 
@@ -36,6 +34,7 @@ class Usuario {
     }
 
     public static function showUsuario() {
+        Usuario::iniciarSesion();
         if ( !isset($_SESSION['ID_USUARIO']) ) {
             $GLOBALS['usuario'] = "Sin Credenciales";
         } else {

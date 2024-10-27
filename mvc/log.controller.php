@@ -31,21 +31,28 @@ class LogController {
             $usuarioDb = $this->model->obtenerUsuario($usuario);
             if ($usuarioDb && password_verify($clave,$usuarioDb->contrasena)) {
                 Usuario::login($usuarioDb);
-                $this->view->showMensaje("El Usuario se ha Logueado con éxito..."); 
-                header('Location: ' . BASE_URL );
+                $mensaje = "El Usuario se ha Logueado con éxito...";
+                $volver = "home";
+                $this->view->showMensaje($mensaje,$volver); 
             } else {
-                $this->view->showMensaje("Usuario y/o clave incorrecta..."); 
-                header('Location: ' . BASE_URL . 'login');
+                $mensaje = "Usuario y/o clave incorrecta...";
+                $volver = "login";
+                $this->view->showMensaje($mensaje,$volver); 
             }
         } else {
-            $this->view->showMensaje("Debe completar correctamente los campos..."); 
-            header('Location: ' . BASE_URL . 'login');
+            $mensaje = "Debe completar correctamente los campos...";
+            $volver = "login";
+            $this->view->showMensaje($mensaje,$volver); 
         }
         return;
     }
 
     public function desloguear(){
+        Usuario::verificar();
         Usuario::logout();
+        $mensaje = "El Usuario ha Cerrado Sesión con éxito...";
+        $volver = "home";
+        $this->view->showMensaje($mensaje,$volver); 
         return;
     }
 
