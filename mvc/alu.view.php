@@ -46,14 +46,14 @@ class AluView {
         return;
     }
 
-    public function showMensaje($mensaje) {
+    public function showMensaje($mensaje ,$volver) {
         Usuario::showUsuario();
-        echo ( $mensaje );
-        echo ( "<script>window.alert('$mensaje');</script>" );
-        echo ( "<script>window.alert('pero redirige el header y no se ve el mensaje');</script>" );
+        $pagina = "Mensaje";
+        $titulo = "Mensaje del Sistema GYM";
+        require 'templates/men_log.phtml';
         return;
     }
-  
+    
 }
 
 ?>

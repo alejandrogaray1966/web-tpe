@@ -32,10 +32,9 @@ class AluController {
         // Obtengo el alumno de la base de datos según su id_alumno
         $alumno = $this->model->obtenerUnAlumno($id);
         if (!$alumno) {
-            $this->view->showMensaje("El Alumno no existe..."); 
-            // sleep(30); demora la ejecucion 30 segundos
-            // Redirijo al listado de alumnos 
-            header('Location: ' . BASE_URL . 'alumnos'); 
+            $mensaje = "El Alumno no existe...";
+            $volver = "alumnos";
+            $this->view->showMensaje($mensaje,$volver); 
         } else {
             // Mando un solo alumno a la vista
             $this->view->mostrarUnAlumno($alumno);
@@ -64,14 +63,16 @@ class AluController {
         
             $alumno = $this->model->obtenerUnAlumno($id);
             if (!$alumno) {
-                $this->view->showMensaje("El Alumno no existe..."); 
+                $mensaje = "El Alumno no existe...";
+                $volver = "alumnos";
+                $this->view->showMensaje($mensaje,$volver); 
             } else {
                 $this->model->delAlumno($id);
-                $this->view->showMensaje("El Alumno se ha borrado con éxito..."); 
+                $mensaje = "El Alumno se ha borrado con éxito...";
+                $volver = "alumnos";
+                $this->view->showMensaje($mensaje,$volver); 
             };
-       
-        // Redirijo al listado de alumnos 
-        header('Location: ' . BASE_URL . 'alumnos'); 
+
         return;
     }
 
@@ -79,7 +80,9 @@ class AluController {
         Usuario::verificar();
  
             if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
-                $this->view->showMensaje("Debe completar el nombre del Alumno...");
+                $mensaje = "Debe completar el nombre del Alumno...";
+                $volver = "alumnos";
+                $this->view->showMensaje($mensaje,$volver); 
             } else {
                 $nombre = htmlspecialchars($_POST['Nombre']);
                 $fecha = $_POST['Fecha'];
@@ -88,11 +91,11 @@ class AluController {
                 $rutina = $_POST['Rutina'];
                 $foto = "images/alumnonuevo.jpeg";
                 $this->model->addAlumno( $nombre , $fecha , $peso , $altura , $rutina , $foto );
-                $this->view->showMensaje("El Alumno se ha agregado con éxito...");    
+                $mensaje = "El Alumno se ha agregado con éxito...";
+                $volver = "alumnos";
+                $this->view->showMensaje($mensaje,$volver);   
             };
 
-        // Redirijo al listado de alumnos 
-        header('Location: ' . BASE_URL . 'alumnos');
         return;      
     }
 
@@ -109,7 +112,9 @@ class AluController {
         Usuario::verificar();
 
             if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
-                $this->view->showMensaje("Debe completar el nombre del Alumno...");
+                $mensaje = "Debe completar el nombre del Alumno...";
+                $volver = "alumnos";
+                $this->view->showMensaje($mensaje,$volver); 
             } else {
                 $nombre = htmlspecialchars($_POST['Nombre']);
                 $fecha = $_POST['Fecha'];
@@ -121,11 +126,11 @@ class AluController {
                 }else{
                     $this->model->updAlumno( $id , $nombre , $fecha , $peso , $altura , $rutina );
                 }
-                $this->view->showMensaje("El Alumno se ha agregado con éxito...");    
+                $mensaje = "El Alumno se ha modificado con éxito...";
+                $volver = "alumnos";
+                $this->view->showMensaje($mensaje,$volver);    
             };
 
-        // Redirijo al listado de alumnos 
-        header('Location: ' . BASE_URL . 'alumnos');
         return;  
     }
 

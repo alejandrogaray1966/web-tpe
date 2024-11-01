@@ -32,10 +32,9 @@ class RutController {
         // Obtengo la rutina de la base de datos según su id_rutina
         $rutina = $this->model->obtenerUnaRutina($id);
         if (!$rutina) {
-            $this->view->showRutMensaje("La Rutina no existe..."); 
-            // sleep(30); demora la ejecucion 30 segundos
-            // Redirijo al listado de rutinas 
-            header('Location: ' . BASE_URL . 'rutinas'); 
+            $mensaje = "La Rutina no existe...";
+            $volver = "rutinas";
+            $this->view->showMensaje($mensaje,$volver); 
         } else {
             // Mando una sola rutina a la vista
             $this->view->mostrarUnaRutina($rutina,$alumnos);
@@ -56,17 +55,21 @@ class RutController {
             if ( empty($alumnos) ) {
                 $rutina = $this->model->obtenerUnaRutina($id);
                 if ( !$rutina ) {
-                    $this->view->showRutMensaje("La Rutina no existe..."); 
+                    $mensaje = "La Rutina no existe...";
+                    $volver = "rutinas";
+                    $this->view->showMensaje($mensaje,$volver); 
                 } else {
                     $this->model->delRutina($id);
-                    $this->view->showRutMensaje("La Rutina se ha borrado con éxito..."); 
+                    $mensaje = "La Rutina se ha borrado con éxito...";
+                    $volver = "rutinas";
+                    $this->view->showMensaje($mensaje,$volver); 
                 };
             } else {
-                $this->view->showRutMensaje("La Rutina no se puede borrar, está asignada...");
+                $mensaje = "La Rutina no se puede borrar, está asignada...";
+                $volver = "rutinas";
+                $this->view->showMensaje($mensaje,$volver); 
             }
 
-        // Redirijo al listado de rutinas 
-        header('Location: ' . BASE_URL . 'rutinas'); 
         return;
     }
 
@@ -74,7 +77,9 @@ class RutController {
         Usuario::verificar();
   
             if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
-                $this->view->showRutMensaje("Debe completar el nombre de la Rutina...");
+                $mensaje = "Debe completar el nombre de la Rutina...";
+                $volver = "rutinas";
+                $this->view->showMensaje($mensaje,$volver); 
             } else {
                 $nombre = htmlspecialchars($_POST['Nombre']);
                 $entrada = htmlspecialchars($_POST['Entrada']);
@@ -82,11 +87,11 @@ class RutController {
                 $espalda = htmlspecialchars($_POST['Espalda']);
                 $piernas = htmlspecialchars($_POST['Piernas']);
                 $this->model->addRutina( $nombre , $entrada , $pecho , $espalda , $piernas );
-                $this->view->showRutMensaje("La Rutina se ha agregado con éxito...");    
+                $mensaje = "La Rutina se ha agregado con éxito...";
+                $volver = "rutinas";
+                $this->view->showMensaje($mensaje,$volver); 
             };
 
-        // Redirijo al listado de rutinas 
-        header('Location: ' . BASE_URL . 'rutinas');
         return;      
     }
 
@@ -103,7 +108,9 @@ class RutController {
         Usuario::verificar();
 
             if (!isset($_POST['Nombre']) || empty($_POST['Nombre'])) {
-                $this->view->showRutMensaje("Debe completar el nombre de la Rutina...");
+                $mensaje = "Debe completar el nombre de la Rutina...";
+                $volver = "rutinas";
+                $this->view->showMensaje($mensaje,$volver); 
             } else {
                 $nombre = htmlspecialchars($_POST['Nombre']);
                 $entrada = htmlspecialchars($_POST['Entrada']);
@@ -111,11 +118,11 @@ class RutController {
                 $espalda = htmlspecialchars($_POST['Espalda']);
                 $piernas = htmlspecialchars($_POST['Piernas']);
                 $this->model->updRutina( $id , $nombre , $entrada , $pecho , $espalda , $piernas );
-                $this->view->showRutMensaje("La Rutina se ha modificado con éxito...");    
+                $mensaje = "La Rutina se ha modificado con éxito...";
+                $volver = "rutinas";
+                $this->view->showMensaje($mensaje,$volver);    
             };
 
-        // Redirijo al listado de rutinas 
-        header('Location: ' . BASE_URL . 'rutinas');
         return;      
     }
     
