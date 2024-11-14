@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2024 a las 08:31:55
+-- Tiempo de generación: 14-11-2024 a las 18:48:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -84,6 +84,46 @@ INSERT INTO `claves` (`id_clave`, `usuario`, `contrasena`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `promociones`
+--
+
+CREATE TABLE `promociones` (
+  `id_promocion` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `horario` varchar(30) NOT NULL,
+  `especialidad` varchar(30) NOT NULL,
+  `precio` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `promociones`
+--
+
+INSERT INTO `promociones` (`id_promocion`, `fecha`, `horario`, `especialidad`, `precio`) VALUES
+(1, '2024-11-01', 'de 15:00 Hs. a 17:00 Hs.', 'pilates', 2000),
+(2, '2024-11-08', 'de 15:00 Hs. a 17:00 Hs.', 'pesas', 2500),
+(3, '2024-11-15', 'de 15:00 Hs. a 17:00 Hs.', 'spinning', 1800),
+(4, '2024-11-22', 'de 16:00 Hs. a 18:00 Hs.', 'pesas', 2000),
+(5, '2024-11-30', 'de 16:00 Hs. a 18:00 Hs.', 'pilates', 1750),
+(6, '2024-11-28', 'de 16:00 Hs. a 18:00 Hs.', 'spinning', 1900),
+(7, '2024-12-05', 'de 11:00 Hs. a 13:00 Hs.', 'pesas', 1500),
+(8, '2024-12-19', 'de 16:00 Hs. a 18:00 Hs.', 'pilates', 3000),
+(9, '2024-12-11', 'de 11:00 Hs. a 13:00 Hs.', 'yoga', 1500),
+(10, '2024-12-18', 'de 11:00 Hs. a 13:00 Hs.', 'yoga', 1750),
+(11, '2025-02-25', 'de 11:00 Hs. a 13:00 Hs.', 'yoga', 1750),
+(13, '2025-03-23', 'de 17:00 Hs. a 19:00 Hs.', 'yoga', 2200),
+(14, '2024-12-27', 'de 11:00 Hs. a 13:00 Hs.', 'pilates', 2500),
+(15, '2024-12-27', 'de 11:00 Hs. a 13:00 Hs.', 'pilates', 2300),
+(16, '2025-12-05', 'de 09:00 Hs. a 11:00 Hs.', 'pesas', 1750),
+(19, '2024-12-19', 'de 16:00 Hs. a 18:00 Hs.', 'pilates', 3000),
+(21, '2025-04-14', 'de 10:00 hs. a 14:30 hs.', 'yoga', 2250),
+(22, '2025-04-15', 'de 11:00 hs. a 14:30 hs.', 'yoga', 2250),
+(23, '2025-04-16', 'de 12:00 hs. a 14:30 hs.', 'yoga', 2250),
+(24, '2024-11-15', 'de 10:00 Hs. a 12:00 Hs.', 'spinning', 1900);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `rutinas`
 --
 
@@ -129,6 +169,13 @@ ALTER TABLE `claves`
   ADD UNIQUE KEY `id_clave` (`id_clave`);
 
 --
+-- Indices de la tabla `promociones`
+--
+ALTER TABLE `promociones`
+  ADD PRIMARY KEY (`id_promocion`),
+  ADD UNIQUE KEY `id_promocion` (`id_promocion`) USING BTREE;
+
+--
 -- Indices de la tabla `rutinas`
 --
 ALTER TABLE `rutinas`
@@ -143,7 +190,7 @@ ALTER TABLE `rutinas`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `claves`
@@ -152,10 +199,16 @@ ALTER TABLE `claves`
   MODIFY `id_clave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `promociones`
+--
+ALTER TABLE `promociones`
+  MODIFY `id_promocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT de la tabla `rutinas`
 --
 ALTER TABLE `rutinas`
-  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Restricciones para tablas volcadas
